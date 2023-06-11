@@ -1,29 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script> <!-- Link to the javascript file -->
-    <link rel="stylesheet" href="style.css">
-    <title>Contact</title>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="script.js"></script> <!-- Link to the javascript file -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+   </script>
+   <link rel="stylesheet" href="style.css">
+   <title>Contact</title>
 </head>
+
 <body>
-    <table>
-        <thead>
-           <tr>
-              <th>Index</th>
-              <th>Name</th>
-              <th>Number</th>
-           </tr>
-        </thead>
-        <tbody id="data-output">
-           <!-- Prodcuts from javascript file in here. -->
-        </tbody>
-     </table>
+   <input type="text" id="myInput" placeholder="Search for names..">
+   <table id="myTable">
+      <thead>
+         <tr>
+            <th>Index</th>
+            <th>Name</th>
+            <th>Number</th>
+         </tr>
+      </thead>
+      <tbody id="data-output">
+         <!-- Prodcuts from javascript file in here. -->
+      </tbody>
+   </table>
+   <script>
+      $(document).ready(function () {
+         $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#data-output tr").filter(function () {
+               $(this).toggle($(this).text()
+                  .toLowerCase().indexOf(value) > -1)
+            });
+         });
+      });
+   </script>
 </body>
+
 </html>
-
-
-
-
